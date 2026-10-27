@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-07T18:55:41.222Z",
+  "synthetic": true,
+  "realClientContacts": 0,
+  "syntheticSubmissions": 100,
+  "elapsedMs": 12515,
+  "externalRequests": 0,
+  "duplicatePosts": 0,
+  "guardChecks": [
+    "quota exhaustion",
+    "account mismatch",
+    "resume without resend",
+    "post-reload receipt",
+    "exact receipt body, not substring"
+  ],
+  "note": "Local synthetic fixture benchmark only; not real application throughput or client delivery."
+}

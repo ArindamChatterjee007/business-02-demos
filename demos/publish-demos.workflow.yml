@@ -1,0 +1,68 @@
+name: Verify and publish synthetic demos
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'demos/**'
+      - 'tests/**'
+      - 'static/**'
+      - 'scripts/**'
+      - 'package*.json'
+      - '.github/workflows/publish-demos.yml'
+  schedule:
+    - cron: '30 20 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: demo-publication
+  cancel-in-progress: false
+
+jobs:
+  verify-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install locked dependencies and browser
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          sudo -n apt-get update -qq
+          sudo -n apt-get install -y --no-install-recommends poppler-utils
+      - name: Verify extraction and interactive demo
+        run: |
+          npm test
+          npm run build
+      - name: Publish verified static site and evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh auth setup-git
+          destination="$RUNNER_TEMP/verified-demo-site"
+          if gh api "repos/$GH_REPO/git/ref/heads/gh-pages" >/dev/null 2>&1; then
+            git clone --depth 1 --single-branch --branch gh-pages "https://github.com/$GH_REPO.git" "$destination"
+          else
+            git init -b gh-pages "$destination"
+            git -C "$destination" remote add origin "https://github.com/$GH_REPO.git"
+          fi
+          rsync -a --delete --exclude=.git site/ "$destination/"
+          git -C "$destination" config user.name 'github-actions[bot]'
+          git -C "$destination" config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C "$destination" add --all
+          if ! git -C "$destination" diff --cached --quiet; then
+            git -C "$destination" commit -m "Publish verified demo build $GITHUB_RUN_ID"
+            git -C "$destination" push origin HEAD:gh-pages
+          fi
+          cat site/deployment.json >> "$GITHUB_STEP_SUMMARY"

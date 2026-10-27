@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form Desk / Local PDF Workflow Demo</title>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#workspace" aria-label="Form Desk workspace"><span class="brand-mark"><i data-lucide="files"></i></span><strong>FORM DESK</strong><span class="brand-divider"></span><span class="brand-subtitle">Document workspace</span></a>
+    <span class="local-indicator"><span></span> Local processing</span>
+  </header>
+  <main id="workspace">
+    <section class="workspace-heading">
+      <div><p class="eyebrow">BATCH WORKSPACE</p><h1>From forms to clean rows.</h1><p class="disclosure">Personal, AI-assisted demo. Synthetic data, not client work.</p></div>
+      <div class="heading-actions"><button id="load-samples" class="button secondary"><i data-lucide="rotate-ccw"></i><span>Sample batch</span></button><button id="export" class="button primary" disabled><i data-lucide="download"></i><span>Export Excel</span></button></div>
+    </section>
+    <div class="workspace-grid">
+      <aside class="source-panel" aria-labelledby="source-title">
+        <div class="section-heading"><h2 id="source-title">Source files</h2><span id="file-count" class="count">0</span></div>
+        <label class="upload-zone" id="drop-zone"><i data-lucide="upload"></i><strong>Add PDFs</strong><span>Up to 20 files, 5 MiB each</span><input id="pdf-files" type="file" accept=".pdf,application/pdf" multiple aria-label="Add PDF files"></label>
+        <div id="file-list" class="file-list" aria-label="Selected PDF files"></div>
+        <div class="source-footer"><i data-lucide="shield-check"></i><div><strong>In this browser only</strong><span>No upload, account or analytics.</span></div></div>
+      </aside>
+      <section class="data-panel" aria-label="Extraction workspace">
+        <div class="workspace-toolbar"><div class="tabs" role="tablist" aria-label="Workspace views"><button class="tab" id="tab-table" role="tab" aria-selected="true" aria-controls="table-panel" data-view="table">Data table</button><button class="tab" id="tab-map" role="tab" aria-selected="false" aria-controls="map-panel" data-view="map" tabindex="-1">Field map</button><button class="tab" id="tab-checks" role="tab" aria-selected="false" aria-controls="checks-panel" data-view="checks" tabindex="-1">Checks <span id="check-count">0</span></button></div><button id="validate" class="button secondary compact" disabled><i data-lucide="play"></i><span>Validate</span></button></div>
+        <div class="batch-stats"><div><span>FILES</span><strong id="stat-files">0</strong></div><div><span>MAPPED FIELDS</span><strong id="stat-fields">6</strong></div><div><span>EXTRACTED ROWS</span><strong id="stat-rows">0</strong></div><div class="batch-state"><span>BATCH STATUS</span><strong id="batch-state">Empty</strong></div></div>
+        <p id="status" class="status" role="status" aria-live="polite">No files selected.</p>
+        <section id="table-panel" class="view-panel" role="tabpanel" aria-labelledby="tab-table"><div class="table-heading"><h2>Extracted fields</h2><span id="row-summary">0 rows</span></div><div class="table-scroll"><table id="results"><thead></thead><tbody></tbody></table></div><div id="empty-state" class="empty-state"><i data-lucide="file-spreadsheet"></i><h3>No extracted rows</h3></div><div class="table-notes"><span><i data-lucide="check"></i> Leading zeros preserved</span><span><i data-lucide="check"></i> Literal text stays literal</span><span><i data-lucide="check"></i> Typed cells</span></div></section>
+        <section id="map-panel" class="view-panel" role="tabpanel" aria-labelledby="tab-map" hidden><div class="table-heading"><h2>Output schema</h2><div class="map-actions"><label class="icon-button" title="Import field map" aria-label="Import field map"><i data-lucide="upload"></i><input id="map-file" type="file" accept=".json,application/json" aria-label="Import field map JSON"></label><button id="download-map" class="icon-button" title="Download field map" aria-label="Download field map"><i data-lucide="download"></i></button><button id="add-field" class="icon-button" title="Add mapped field" aria-label="Add mapped field"><i data-lucide="plus"></i></button></div></div><div id="mapping" class="mapping"></div></section>
+        <section id="checks-panel" class="view-panel" role="tabpanel" aria-labelledby="tab-checks" hidden><div class="table-heading"><h2>Validation results</h2><span id="checks-summary">Not run</span></div><ul id="checks-list" class="checks-list"></ul><div class="limits"><strong>Scope limits</strong><p>Fillable AcroForms only. Scans, flattened PDFs, XFA and encrypted documents are outside this demo.</p></div></section>
+        <footer class="workspace-footer"><span id="batch-label">No batch loaded</span><button id="clear" class="text-button" disabled><i data-lucide="trash-2"></i>Clear files</button></footer>
+      </section>
+      <aside class="preview-panel" aria-labelledby="preview-title"><div class="section-heading"><h2 id="preview-title">Source preview</h2><button id="download-source" class="icon-button" title="Download selected PDF" aria-label="Download selected PDF" disabled><i data-lucide="download"></i></button></div><p id="preview-name" class="preview-name">No file selected</p><div class="preview-paper"><img id="preview-image" alt="Synthetic source form preview" width="420" height="594" hidden><div id="preview-empty" class="preview-empty"><i data-lucide="file-text"></i><span>No preview</span></div></div><dl class="file-details"><div><dt>File size</dt><dd id="preview-size">-</dd></div><div><dt>Form fields</dt><dd id="preview-fields">-</dd></div><div><dt>Validation</dt><dd id="preview-state">Not run</dd></div></dl><button id="invalid-sample" class="text-button example-error"><i data-lucide="circle-alert"></i>Invalid sample</button></aside>
+    </div>
+    <footer class="page-footer"><span>FORM DESK / SELF-INITIATED DEMONSTRATION</span><span id="privacy-state">No network requests required</span></footer>
+  </main>
+  <script id="sample-data" type="application/json">__SAMPLE_DATA__</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "createdAt": "2026-10-06T12:34:16.107Z",
+  "demoOnly": true,
+  "api": "In-memory fixture using the existing validation model; not a production backend test",
+  "clientDataUsed": false,
+  "actualSource": [
+    "office/ui/index.html",
+    "office/ui/entry.mjs",
+    "office/ui/office.css",
+    "office/model.mjs"
+  ],
+  "checks": [
+    "Submission metric filters the synthetic application list",
+    "Award transition rejects missing agreement evidence",
+    "Edited fixture survives page reload and search narrows records",
+    "1440px viewport: no horizontal overflow, working record dialog, synthetic labels",
+    "390px viewport: no horizontal overflow, working record dialog, synthetic labels",
+    "320px viewport: no horizontal overflow, working record dialog, synthetic labels",
+    "Zero page errors and no external requests or live-store access"
+  ],
+  "screenshots": [
+    {
+      "file": "tracker-1440.png",
+      "width": 1440,
+      "sha256": "f820da18c58d9bfe90563984b100c44280161c6b876e70527bd1c8d171484c81"
+    },
+    {
+      "file": "tracker-390.png",
+      "width": 390,
+      "sha256": "bedf54f506ba25488c8ebd5c97cf3941e6caff0a0559ef2bdf9db6eb322670ed"
+    },
+    {
+      "file": "tracker-320.png",
+      "width": 320,
+      "sha256": "8c9ce503a410433beb39435f3ec5f65dbd14f8fbfb6e6b5a54a645c39c8dc7e5"
+    },
+    {
+      "file": "tracker-case-study.png",
+      "width": 1600,
+      "height": 1200,
+      "sha256": "0ae8d37bf3410889da98b823b1e5d86805b88bdef6b57b55a30226b90d0c62a7"
+    }
+  ],
+  "pageErrors": [],
+  "externalRequests": []
+}

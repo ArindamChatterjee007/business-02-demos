@@ -1,0 +1,38 @@
+[
+  {
+    "field": "request.id",
+    "header": "Request ID",
+    "type": "text",
+    "required": true
+  },
+  {
+    "field": "request.amount",
+    "header": "Amount",
+    "type": "number",
+    "required": true
+  },
+  {
+    "field": "request.notes",
+    "header": "Notes",
+    "type": "text",
+    "required": false
+  },
+  {
+    "field": "request.confirmed",
+    "header": "Confirmed",
+    "type": "boolean",
+    "required": true
+  },
+  {
+    "field": "request.services",
+    "header": "Services",
+    "type": "list",
+    "required": true
+  },
+  {
+    "field": "request.priority",
+    "header": "Priority",
+    "type": "text",
+    "required": false
+  }
+]

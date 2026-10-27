@@ -1,0 +1,30 @@
+{
+  "name": "business-02-demos",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "node scripts/build-site.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:demo": "node demos/test-form-desk.mjs"
+  },
+  "dependencies": {
+    "@fontsource/manrope": "5.3.0",
+    "lucide": "1.48.0",
+    "proper-lockfile": "4.1.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "esbuild": "0.28.2",
+    "exceljs": "4.4.0",
+    "pdf-lib": "1.17.1"
+  },
+  "overrides": {
+    "exceljs": {
+      "uuid": "11.1.1"
+    }
+  }
+}

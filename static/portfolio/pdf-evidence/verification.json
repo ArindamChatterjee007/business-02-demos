@@ -1,0 +1,33 @@
+{
+  "demoOnly": true,
+  "inputCount": 3,
+  "outputRows": 3,
+  "mappedFields": 6,
+  "sources": [
+    {
+      "name": "synthetic-01.pdf",
+      "sha256": "293e9bc93a231665daa975506a862f54134dbfdde51ce797ff1cff4dee0c6790"
+    },
+    {
+      "name": "synthetic-02.pdf",
+      "sha256": "245e809bbce4843c7e78a1ec4fdc29fc421fae4c5cdc346e86aad2cda9cee94b"
+    },
+    {
+      "name": "synthetic-03.pdf",
+      "sha256": "d1e28949afb17e111d676bcf72bbc293064ff450a99baa74c27ee1120050e806"
+    }
+  ],
+  "verifiedAt": "2026-10-06T07:11:36.341Z",
+  "status": "PASS",
+  "checks": [
+    "Three saved synthetic PDFs read back",
+    "Exact schema and typed values",
+    "Leading-zero identifiers preserved",
+    "Formula-looking and XML-like text remained literal",
+    "Blank optional value did not become zero",
+    "Input hashes unchanged",
+    "No client files or account access"
+  ],
+  "workbookSHA256": "d4107af0eedf68df638ae8fd9603895021f07da8f91c2c7e5ae77e2c2bee0e45",
+  "limits": "Synthetic proof only. No client sample, OCR, XFA, encrypted PDFs, arbitrary field layouts or high-volume validation."
+}
